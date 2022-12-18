@@ -33,14 +33,12 @@ function onResults(results) {
       new Emitter(
         results.multiHandLandmarks[8].x * width,
         results.multiHandLandmarks[8].y * height, 
-        results.multiHandLandmarks[8].z
       )
     );
     emitters.push(
       new Emitter(
         results.multiHandLandmarks[12].x * width,
         results.multiHandLandmarks[12].y * height,
-        results.multiHandLandmarks[12].z
       )
     );
   }
