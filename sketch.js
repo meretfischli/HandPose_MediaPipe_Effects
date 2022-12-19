@@ -28,34 +28,24 @@ function onResults(results) {
 
   canvasCtx.restore();
 
-  if (frameCount % 30) {
-    emitters.push(
-      new Emitter(
-        results.multiHandLandmarks[8].x * width,
-        results.multiHandLandmarks[8].y * height, 
-      )
-    );
-    emitters.push(
-      new Emitter(
-        results.multiHandLandmarks[12].x * width,
-        results.multiHandLandmarks[12].y * height,
-      )
-    );
+ if (results.multiHandLandmarks) {
+    for (const landmarks of results.multiHandLandmarks){
+      emitters.push(
+        new Emitter(
+          landmarks[8].x * width,
+          landmarks[8].y * height, 
+          landmarks[8].z
+        )
+      );
+      emitters.push(
+        new Emitter(
+          landmarks[12].x * width,
+          landmarks[12].y * height,
+          landmarks[12].z
+        )
+      ); 
+    }
   }
-
-  // if (results.multiHandLandmarks) {
-  //   for (const landmarks of results.multiHandLandmarks) {
-
-  //     drawLandmarks(canvasCtx, landmarks, { color: "#FFF000", lineWidth: 2 });
-  //     console.log(landmarks)
-      
-  //     //fill(0, 0, 255);
-  //     // circle(landmarks[8].x * width, landmarks[8].y * height, 100, 100);
-  //   }
-  // }
-  
-
-  //emitters.push(new Emitter(results.multiHandLandmarks[8].x * width, results.multiHandLandmarks[8].y * height))
   
 }
 
@@ -84,6 +74,8 @@ function setup() {
 }
 
 function draw() {
+  translate(video.width, 0)
+	scale(-1,1)
   image(webcam, 0, 0, webcam.width, webcam.height);
 
   if (emitters.length > 3) {
