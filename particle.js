@@ -25,10 +25,13 @@ class Particle {
     }
   
     show() {
-      stroke(255, this.lifetime);
-      strokeWeight(2);
-      fill(255, this.lifetime);
-      ellipse(this.pos.x, this.pos.y, this.r * 2);
+      noStroke()
+      fill(random(0, 255), random(0, 255), random(0, 255), this.lifetime);
+      //ellipse(this.pos.x, this.pos.y, this.r * 2);
+
+      // scale(2)
+      text("🥦", this.pos.x, this.pos.y);
+      
     }
   }
   
